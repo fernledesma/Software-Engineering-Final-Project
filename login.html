@@ -1,0 +1,33 @@
+% block content %}
+
+{% load crispy_forms_tags %}
+
+<!--Login-->
+<html lang="">
+<head class="main title" style="Background-color:rgb(186, 26, 26)">
+    {% if title %}
+        <title>Last Shop - {{title}}</title>
+    {% else %}
+        <title>Last Shop</title>
+    {% endif %}
+</head>
+    {% if messages %}
+        {% for message in messages %}
+            <div class = "alert alert-{{ message.tags }}">
+                {{ messsage }}
+            </div>
+        {% endfor %}
+    {% endif %}
+<body>
+<div class="container py-5">
+  <h1>Login</h1>
+  <form method="POST">
+    {% csrf_token %}
+    {{ login_form|crispy }}
+    <button class="btn btn-primary" type="submit">Login</button>
+  </form>
+  <p class="text-center">Don't have an account? <a href=register.html>Create an account</a>.</p>
+  <img src="white-marble-cat-3000-61x61-matt.jpeg" style="background-image: 100%;">
+</div>
+
+{% endblock %}
